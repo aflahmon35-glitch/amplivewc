@@ -1,10 +1,324 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AMP LIVE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMP LIVE</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:15px;
+transition:0.3s;
+}
+
+body.light{
+background:#f5f5f5;
+color:#111;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+.card{
+background:#1e293b;
+border-radius:15px;
+padding:18px;
+margin-bottom:15px;
+}
+
+body.light .card{
+background:white;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.header{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.theme-btn{
+cursor:pointer;
+font-size:24px;
+background:none;
+border:none;
+color:inherit;
+}
+
+.live-badge{
+display:inline-block;
+background:red;
+padding:8px 15px;
+border-radius:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.match-name{
+font-size:28px;
+font-weight:bold;
+}
+
+.notice{
+text-align:center;
+font-size:16px;
+line-height:1.5;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.buttons button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+background:#dc2626;
+color:white;
+}
+
+.active{
+background:#16a34a;
+color:white;
+border:2px solid white;
+}
+
+.player{
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
+border-radius:12px;
+background:black;
+}
+
+.player iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:none;
+}
+
+.action-btn{
+display:block;
+width:100%;
+text-align:center;
+padding:15px;
+margin-top:10px;
+text-decoration:none;
+font-weight:bold;
+border-radius:10px;
+}
+
+.refresh{
+background:#2563eb;
+color:white;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
+}
+
+.features ul{
+padding-left:20px;
+line-height:2;
+}
+
+.footer{
+font-size:12px;
+opacity:0.7;
+text-align:center;
+margin-top:20px;
+line-height:1.8;
+}
+
+@media(max-width:768px){
+
+.header{
+font-size:22px;
+}
+
+.match-name{
+font-size:22px;
+}
+
+}
+.buttons{
+flex-direction:column;
+}
+}
+</style>
 </head>
+
 <body>
-    <h1>AMP LIVE</h1>
-    <p>Website setup successful.</p>
+
+<div class="container">
+
+<div class="card header">
+<span>🏆 AMP LIVE</span>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+</div>
+
+<div class="card">
+<div class="live-badge">🔴 LIVE NOW</div>
+
+<div class="match-name">
+France vs Senegal
+</div>
+</div>
+
+<div class="card notice">
+⚠️ Please wait a few seconds for the player to load properly.
+</div>
+
+<div class="card">
+<div class="buttons">
+
+<button class="active" onclick="loadStream(1,this)">
+Live 1 (English)
+</button>
+
+<button onclick="loadStream(2,this)">
+Live 2 (Malayalam)
+</button>
+
+<button onclick="loadStream(3,this)">
+Live 3 (Arabic)
+</button>
+
+</div>
+</div>
+
+<div class="card">
+<div class="player">
+<iframe
+id="player"
+src=""
+allowfullscreen>
+</iframe>
+</div>
+
+<a href="#" class="action-btn refresh" onclick="refreshPlayer();return false;">
+🔄 Refresh Stream
+</a>
+</div>
+
+<a
+href="https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs"
+target="_blank"
+class="action-btn whatsapp">
+💬 Join Malayalam Football Group
+</a>
+
+<div class="card features">
+<h3>Features</h3>
+<ul>
+<li>HD Streaming</li>
+<li>Multiple Commentary Options</li>
+<li>Mobile Friendly</li>
+<li>Fast Loading</li>
+<li>Works on Phones and Laptops</li>
+</ul>
+</div>
+
+<div class="footer">
+<p>
+We do not own or host any content displayed on this website.
+</p>
+
+<p>
+All streams are embedded from third-party sources.
+</p>
+
+<p>
+For residential viewing only. Public screening is prohibited.
+</p>
+</div>
+
+</div>
+
+<script>
+
+// EDIT THESE LINKS ONLY
+
+const ENGLISH_LINK = "";
+const MALAYALAM_LINK = "";
+const ARABIC_LINK = "";
+
+// AUTO LOAD ENGLISH
+
+document.getElementById("player").src = ENGLISH_LINK;
+
+function loadStream(num,btn){
+
+document.querySelectorAll(".buttons button")
+.forEach(b=>b.classList.remove("active"));
+
+btn.classList.add("active");
+
+if(num===1){
+document.getElementById("player").src=ENGLISH_LINK;
+}
+
+if(num===2){
+document.getElementById("player").src=MALAYALAM_LINK;
+}
+
+if(num===3){
+document.getElementById("player").src=ARABIC_LINK;
+}
+
+}
+
+function refreshPlayer(){
+
+let player=document.getElementById("player");
+let current=player.src;
+
+player.src="";
+setTimeout(()=>{
+player.src=current;
+},500);
+
+}
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+const btn=document.getElementById("themeBtn");
+
+if(document.body.classList.contains("light")){
+btn.innerHTML="☀️";
+}else{
+btn.innerHTML="🌙";
+}
+
+}
+
+</script>
+
 </body>
 </html>
