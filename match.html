@@ -1,1 +1,72 @@
-Coming Soon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match - AMP LIVE</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo">AMP LIVE</div>
+  <button id="themeToggle" class="btn theme">🌙</button>
+</header>
+
+<!-- MATCH INFO -->
+<main class="container">
+
+  <div class="match-header">
+
+    <div class="match-teams">
+
+      <div class="team">
+        <img id="homeFlag" src="" />
+        <h3 id="homeTeam"></h3>
+      </div>
+
+      <div class="vs-big">VS</div>
+
+      <div class="team">
+        <img id="awayFlag" src="" />
+        <h3 id="awayTeam"></h3>
+      </div>
+
+    </div>
+
+    <div class="match-meta">
+      <p id="competition"></p>
+      <p id="stadium"></p>
+      <p id="kickoffTime"></p>
+    </div>
+
+    <div class="status-box">
+      <span id="statusBadge" class="badge">UPCOMING</span>
+      <div id="countdown"></div>
+    </div>
+
+  </div>
+
+  <!-- TABS -->
+  <div class="match-tabs">
+    <button class="tab active">Game</button>
+    <button class="tab">Lineups</button>
+    <button class="tab">Stats</button>
+    <button class="tab">H2H</button>
+  </div>
+
+  <!-- STREAMS -->
+  <div class="streams">
+    <h3>Live Streams</h3>
+    <div id="streamList" class="stream-grid"></div>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
