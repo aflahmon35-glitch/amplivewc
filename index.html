@@ -1,14 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMP LIVE</title>
-</head>
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:15px;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.live-badge{
+background:red;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.match-card{
+background:#1e293b;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.match-title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.watch-btn{
+display:inline-block;
+margin-top:10px;
+background:#22c55e;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.section-title{
+font-size:22px;
+margin:20px 0 10px;
+}
+
+</style>
+
+</head>
 <body>
 
-<h1>AMP LIVE</h1>
+<header>
 
-<p>Football Live Streaming</p>
+<div class="logo">
+⚽ AMP LIVE
+</div>
+
+<div class="live-badge">
+LIVE
+</div>
+
+</header>
+
+<h2 class="section-title">LIVE NOW</h2>
+
+<div class="match-card">
+
+<div class="match-title">
+🇫🇷 France vs Senegal 🇸🇳
+</div>
+
+<div>
+World Cup 2026
+</div>
+
+<div>
+05:30 AM IST
+</div>
+
+<a href="match.html" class="watch-btn">
+Watch Match
+</a>
+
+</div>
+
+<h2 class="section-title">Today's Matches</h2>
+
+<div class="match-card">
+🇦🇷 Argentina vs Japan 🇯🇵
+</div>
+
+<div class="match-card">
+🇧🇷 Brazil vs USA 🇺🇸
+</div>
+
+<div class="match-card">
+🇩🇪 Germany vs Mexico 🇲🇽
+</div>
 
 </body>
 </html>
