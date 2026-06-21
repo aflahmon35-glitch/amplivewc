@@ -1,1 +1,271 @@
-/* AMP LIVE */
+/* =========================
+   AMP LIVE V1 STYLES
+   ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+  transition: 0.3s ease;
+}
+
+/* LIGHT THEME */
+body.light {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* =========================
+   TOP BAR
+   ========================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #1e293b;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+body.light .topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* WhatsApp buttons */
+.whatsapp {
+  background: #22c55e;
+  color: white;
+}
+
+/* Theme button */
+.theme {
+  background: #2563eb;
+  color: white;
+}
+
+/* =========================
+   TABS
+   ========================= */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background: #0b1220;
+}
+
+body.light .tabs {
+  background: #e2e8f0;
+}
+
+.tab {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #334155;
+  color: white;
+  font-size: 13px;
+}
+
+body.light .tab {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* =========================
+   CONTAINER & GRID
+   ========================= */
+
+.container {
+  padding: 15px;
+}
+
+.grid {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* TV / Large screens */
+@media (min-width: 1400px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================
+   MATCH CARD
+   ========================= */
+
+.match-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.match-card:hover {
+  transform: translateY(-3px);
+}
+
+body.light .match-card {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+/* STATUS BAR (left accent) */
+.status-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+}
+
+/* LIVE */
+.status-bar.live {
+  background: #ef4444;
+}
+
+/* UPCOMING */
+.status-bar.upcoming {
+  background: #22c55e;
+}
+
+/* FT */
+.status-bar.ft {
+  background: #64748b;
+}
+
+/* =========================
+   MATCH CONTENT
+   ========================= */
+
+.match-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.team img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.vs {
+  font-weight: bold;
+  color: #94a3b8;
+}
+
+/* =========================
+   MATCH INFO
+   ========================= */
+
+.match-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.time {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+/* STATUS BADGES */
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.badge.live {
+  background: #ef4444;
+  color: white;
+}
+
+.badge.upcoming {
+  background: #22c55e;
+  color: white;
+}
+
+.badge.ft {
+  background: #64748b;
+  color: white;
+}
