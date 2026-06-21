@@ -10,14 +10,14 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
 background:#0f172a;
 color:white;
-transition:0.3s;
 padding:12px;
+transition:0.3s;
 }
 
 /* LIGHT MODE */
@@ -32,11 +32,12 @@ display:flex;
 justify-content:center;
 align-items:center;
 position:relative;
-padding:10px 0;
+padding:12px 0;
 }
 
 header h1{
-font-size:clamp(20px, 4vw, 28px);
+font-size:clamp(26px, 5vw, 36px);
+font-weight:800;
 }
 
 #themeBtn{
@@ -49,32 +50,37 @@ cursor:pointer;
 color:inherit;
 }
 
-/* MATCH INFO */
+/* MATCH */
 .live{
 color:red;
 font-weight:bold;
-margin:8px 0;
+margin:10px 0;
 font-size:13px;
 }
 
 #matchTitle{
-font-size:clamp(16px, 3.8vw, 20px);
-margin-bottom:6px;
+font-size:clamp(20px, 4.5vw, 30px);
+font-weight:700;
+margin-bottom:8px;
 }
 
+/* GREY NOTICE BOX */
 .notice{
-font-size:clamp(11px, 3vw, 13px);
-opacity:0.8;
+text-align:center;
+background:rgba(255,255,255,0.08);
+padding:10px;
+border-radius:8px;
+font-size:clamp(11px, 3vw, 14px);
 margin-bottom:10px;
 }
 
-/* STREAM BUTTONS — ALWAYS ONE ROW */
+/* STREAMS */
 .streams{
 display:flex;
 gap:8px;
-margin:10px 0;
 flex-wrap:nowrap;
 overflow-x:auto;
+margin:10px 0;
 }
 
 .stream-btn{
@@ -110,44 +116,38 @@ height:100%;
 border:none;
 }
 
-/* ACTIONS */
+/* ACTIONS (VERTICAL NOW) */
 .actions{
 display:flex;
+flex-direction:column;
 gap:10px;
 margin:10px 0;
-flex-wrap:wrap;
 }
 
 button, a{
-padding:10px;
+padding:12px;
 border:none;
 border-radius:6px;
 cursor:pointer;
-font-size:13px;
+font-size:14px;
 text-decoration:none;
 text-align:center;
 }
 
-/* buttons layout fix */
+/* buttons */
 .refresh{
 background:#2563eb;
 color:white;
-flex:1;
-min-width:140px;
 }
 
 .whatsapp{
 background:#25D366;
 color:white;
-flex:1;
-min-width:180px;
 }
 
 .channel{
 background:#128C7E;
 color:white;
-flex:1;
-min-width:180px;
 }
 
 /* FEATURES */
@@ -169,58 +169,82 @@ font-size:11px;
 opacity:0.7;
 margin-top:15px;
 line-height:1.4;
+text-align:center;
 }
 
-/* MOBILE FIX */
-@media (max-width:600px){
-.actions{
-flex-direction:column;
+/* LAPTOP IMPROVEMENTS */
+@media (min-width:768px){
+header h1{
+font-size:44px;
 }
 
-.refresh,.whatsapp,.channel{
-width:100%;
+#matchTitle{
+font-size:34px;
+}
+
+.notice{
+font-size:15px;
+}
+
+.actions button, .actions a{
+font-size:15px;
+padding:14px;
 }
 }
 
 /* POPUP */
 #popup{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
+inset:0;
+background:rgba(0,0,0,0.75);
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:999;
+padding:15px;
 }
 
 .popup-box{
 background:#111827;
+width:100%;
+max-width:360px;
+border-radius:12px;
 padding:20px;
-border-radius:10px;
 text-align:center;
-width:90%;
-max-width:320px;
 }
 
 .popup-box h2{
-font-size:18px;
+font-size:20px;
 margin-bottom:10px;
 }
 
-.popup-box button{
-margin-top:10px;
-width:100%;
+.popup-box p{
+font-size:13px;
+opacity:0.8;
+margin-bottom:15px;
 }
 
-.join-btn{
+.popup-box a, .popup-box button{
+display:block;
+width:100%;
+margin:8px 0;
+padding:12px;
+border-radius:6px;
+font-size:14px;
+text-decoration:none;
+}
+
+.join{
 background:#25D366;
 color:white;
 }
 
-.close-btn{
+.channel{
+background:#128C7E;
+color:white;
+}
+
+.close{
 background:#374151;
 color:white;
 }
@@ -232,10 +256,10 @@ color:white;
 <!-- POPUP -->
 <div id="popup">
 <div class="popup-box">
-<h2>Join Our Community</h2>
-<p>Get latest football updates & links</p>
+<h2>Join AMP LIVE Community</h2>
+<p>Get live match updates & streaming links</p>
 
-<a class="join-btn" href="https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" target="_blank">
+<a class="join" href="https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" target="_blank">
 Join WhatsApp Group
 </a>
 
@@ -243,7 +267,7 @@ Join WhatsApp Group
 Join WhatsApp Channel
 </a>
 
-<button class="close-btn" onclick="closePopup()">Already Joined</button>
+<button class="close" onclick="closePopup()">Already Joined</button>
 </div>
 </div>
 
@@ -274,11 +298,9 @@ Join WhatsApp Channel
 <!-- ACTIONS -->
 <div class="actions">
 <button class="refresh" onclick="refreshStream()">🔄 Refresh Stream</button>
-
 <a class="whatsapp" href="https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" target="_blank">
 💬 WhatsApp Group
 </a>
-
 <a class="channel" href="https://whatsapp.com/channel/0029Vb8UrZcE50Uo1ylsQP2w" target="_blank">
 📢 WhatsApp Channel
 </a>
@@ -296,11 +318,10 @@ Join WhatsApp Channel
 </div>
 
 <footer>
-We do not own or host any content displayed on this website. All streams are embedded from third-party sources. For residential viewing only.
+We do not own or host any content displayed on this website. All streams are embedded from third-party sources.
 </footer>
 
 <script>
-// STREAM LINKS
 const streams = {
 english: "",
 malayalam: "",
@@ -309,12 +330,10 @@ arabic: ""
 
 let currentStream = "english";
 
-// LOAD STREAM
 function loadStream(){
 document.getElementById("player").src = streams[currentStream];
 }
 
-// SELECT STREAM
 function selectStream(type){
 currentStream = type;
 
@@ -327,24 +346,20 @@ document.getElementById(type).classList.add("active");
 loadStream();
 }
 
-// REFRESH
 function refreshStream(){
 loadStream();
 }
 
-// THEME
 document.getElementById("themeBtn").onclick = () => {
 document.body.classList.toggle("light");
 document.getElementById("themeBtn").textContent =
 document.body.classList.contains("light") ? "☀️" : "🌙";
 };
 
-// POPUP CONTROL
 function closePopup(){
 document.getElementById("popup").style.display = "none";
 }
 
-// INIT
 loadStream();
 </script>
 
