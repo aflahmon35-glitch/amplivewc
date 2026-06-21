@@ -1,2 +1,58 @@
-{
-}
+[
+  {
+    "id": "m1",
+    "home": "France",
+    "away": "Argentina",
+    "competition": "International Friendly",
+    "stadium": "Wembley Stadium",
+    "kickoff": "2026-06-21T20:30:00",
+    "streams": [
+      { "text": "English", "url": "" },
+      { "text": "Arabic", "url": "" },
+      { "text": "English HD", "url": "" },
+      { "text": "Malayalam", "url": "" },
+      { "text": "Malayalam HD", "url": "" },
+      { "text": "Arabic HD", "url": "" },
+      { "text": "English Backup", "url": "" },
+      { "text": "WhatsApp", "url": "https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" }
+    ]
+  },
+
+  {
+    "id": "m2",
+    "home": "Brazil",
+    "away": "Germany",
+    "competition": "World Cup Warm-up",
+    "stadium": "Maracanã Stadium",
+    "kickoff": "2026-06-21T23:00:00",
+    "streams": [
+      { "text": "English", "url": "" },
+      { "text": "Arabic", "url": "" },
+      { "text": "English HD", "url": "" },
+      { "text": "Malayalam", "url": "" },
+      { "text": "Malayalam HD", "url": "" },
+      { "text": "Arabic HD", "url": "" },
+      { "text": "English Backup", "url": "" },
+      { "text": "WhatsApp", "url": "https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" }
+    ]
+  },
+
+  {
+    "id": "m3",
+    "home": "Spain",
+    "away": "England",
+    "competition": "UEFA Friendly",
+    "stadium": "Santiago Bernabéu",
+    "kickoff": "2026-06-22T18:00:00",
+    "streams": [
+      { "text": "English", "url": "" },
+      { "text": "Arabic", "url": "" },
+      { "text": "English HD", "url": "" },
+      { "text": "Malayalam", "url": "" },
+      { "text": "Malayalam HD", "url": "" },
+      { "text": "Arabic HD", "url": "" },
+      { "text": "English Backup", "url": "" },
+      { "text": "WhatsApp", "url": "https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs" }
+    ]
+  }
+]
