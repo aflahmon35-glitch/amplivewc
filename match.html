@@ -10,29 +10,28 @@
 
 <body>
 
-<!-- TOP BAR -->
 <header class="topbar">
   <div class="logo">AMP LIVE</div>
   <button id="themeToggle" class="btn theme">🌙</button>
 </header>
 
-<!-- MATCH INFO -->
 <main class="container">
 
+  <!-- MATCH HEADER -->
   <div class="match-header">
 
     <div class="match-teams">
 
       <div class="team">
-        <img id="homeFlag" src="" />
-        <h3 id="homeTeam"></h3>
+        <img id="homeFlag" src="">
+        <span id="homeTeam"></span>
       </div>
 
       <div class="vs-big">VS</div>
 
       <div class="team">
-        <img id="awayFlag" src="" />
-        <h3 id="awayTeam"></h3>
+        <img id="awayFlag" src="">
+        <span id="awayTeam"></span>
       </div>
 
     </div>
@@ -40,7 +39,7 @@
     <div class="match-meta">
       <p id="competition"></p>
       <p id="stadium"></p>
-      <p id="kickoffTime"></p>
+      <p id="kickoff"></p>
     </div>
 
     <div class="status-box">
@@ -48,14 +47,6 @@
       <div id="countdown"></div>
     </div>
 
-  </div>
-
-  <!-- TABS -->
-  <div class="match-tabs">
-    <button class="tab active">Game</button>
-    <button class="tab">Lineups</button>
-    <button class="tab">Stats</button>
-    <button class="tab">H2H</button>
   </div>
 
   <!-- STREAMS -->
@@ -67,6 +58,5 @@
 </main>
 
 <script src="script.js"></script>
-
 </body>
 </html>
