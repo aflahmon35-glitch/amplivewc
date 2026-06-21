@@ -119,5 +119,77 @@ function loadMatches() {
     grid.appendChild(card);
   });
 }
+/* =========================
+   MATCH PAGE LOGIC
+========================= */
+
+if (window.location.pathname.includes("match.html")) {
+  const match = JSON.parse(localStorage.getItem("selectedMatch"));
+
+  if (match) {
+    document.getElementById("homeTeam").innerText = match.home;
+    document.getElementById("awayTeam").innerText = match.away;
+
+    document.getElementById("competition").innerText = match.competition;
+    document.getElementById("stadium").innerText = match.stadium;
+
+    document.getElementById("homeFlag").src = `images/${match.home}.png`;
+    document.getElementById("awayFlag").src = `images/${match.away}.png`;
+
+    document.getElementById("kickoff").innerText =
+      new Date(match.kickoff).toLocaleString();
+
+    loadStreams(match.streams);
+    startCountdown(match.kickoff);
+  }
+}
+
+/* STREAMS */
+function loadStreams(streams) {
+  const container = document.getElementById("streamList");
+  container.innerHTML = "";
+
+  streams.forEach(s => {
+    const btn = document.createElement("div");
+    btn.className = "stream-btn";
+    btn.innerText = s.text;
+
+    btn.onclick = () => {
+      localStorage.setItem("streamUrl", s.url);
+      window.location.href = "player.html";
+    };
+
+    container.appendChild(btn);
+  });
+}
+
+/* COUNTDOWN */
+function startCountdown(time) {
+  const el = document.getElementById("countdown");
+  const badge = document.getElementById("statusBadge");
+
+  function update() {
+    const now = new Date().getTime();
+    const target = new Date(time).getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      badge.innerText = "LIVE";
+      badge.style.background = "#ef4444";
+      el.innerText = "LIVE NOW";
+      return;
+    }
+
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    el.innerText = `${h}h ${m}m ${s}s`;
+
+    setTimeout(update, 1000);
+  }
+
+  update();
+}
 
 fetchMatches();
