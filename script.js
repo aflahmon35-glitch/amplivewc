@@ -193,3 +193,58 @@ function startCountdown(time) {
 }
 
 fetchMatches();
+
+/* =========================
+   PLAYER PAGE LOGIC
+========================= */
+
+if (window.location.pathname.includes("player.html")) {
+  const url = localStorage.getItem("streamUrl");
+
+  const frame = document.getElementById("streamFrame");
+
+  if (url) {
+    frame.src = url;
+  } else {
+    frame.innerHTML = "No stream selected";
+  }
+}
+
+/* BACK */
+function goBack() {
+  window.history.back();
+}
+
+/* REFRESH */
+function refreshStream() {
+  const frame = document.getElementById("streamFrame");
+  frame.src = frame.src;
+}
+
+/* FULLSCREEN */
+function toggleFull() {
+  const frame = document.getElementById("streamFrame");
+
+  if (frame.requestFullscreen) {
+    frame.requestFullscreen();
+  }
+}
+
+/* SHARE */
+function shareStream() {
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "AMP LIVE Stream",
+      url: url
+    });
+  } else {
+    alert("Sharing not supported");
+  }
+}
+
+/* WHATSAPP */
+function openWhatsApp() {
+  window.open("https://chat.whatsapp.com/JPj6VATmC1TLdunL4VisOs", "_blank");
+}
