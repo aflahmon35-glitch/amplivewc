@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AMP LIVE</title>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo">AMP LIVE</div>
+
+  <div class="top-actions">
+    <button class="btn whatsapp">WhatsApp Group</button>
+    <button class="btn whatsapp">WhatsApp Channel</button>
+    <button id="themeToggle" class="btn theme">🌙</button>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="tabs">
+  <button class="tab active" data-tab="yesterday">Yesterday</button>
+  <button class="tab" data-tab="today">Today</button>
+  <button class="tab" data-tab="tomorrow">Tomorrow</button>
+</nav>
+
+<!-- MATCH GRID -->
+<main class="container">
+
+  <div id="matchGrid" class="grid">
+
+    <!-- SAMPLE CARD (JS will generate real ones later) -->
+    <div class="match-card live">
+      
+      <div class="status-bar live"></div>
+
+      <div class="match-top">
+        <div class="team">
+          <img src="images/france.png" />
+          <span>France</span>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="team">
+          <img src="images/argentina.png" />
+          <span>Argentina</span>
+        </div>
+      </div>
+
+      <div class="match-info">
+        <div class="time">20:30 IST</div>
+        <div class="badge live">LIVE</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
