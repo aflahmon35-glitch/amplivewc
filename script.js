@@ -1,14 +1,9 @@
-/* =========================
-   AMP LIVE V1 SCRIPT
-   ========================= */
+let matchesData = [];
+let currentTab = "today";
 
-/* -------------------------
-   THEME SYSTEM
-------------------------- */
-
+/* THEME */
 const themeBtn = document.getElementById("themeToggle");
 
-// Load saved theme
 if (localStorage.getItem("theme") === "light") {
   document.body.classList.add("light");
   themeBtn.innerText = "☀️";
@@ -26,108 +21,69 @@ themeBtn.addEventListener("click", () => {
   }
 });
 
-/* -------------------------
-   TAB SYSTEM
-------------------------- */
-
-const tabs = document.querySelectorAll(".tab");
-let currentTab = "today";
-
-tabs.forEach(tab => {
+/* TABS */
+document.querySelectorAll(".tab").forEach(tab => {
   tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     tab.classList.add("active");
-
     currentTab = tab.dataset.tab;
     loadMatches();
   });
 });
 
-/* -------------------------
-   FETCH MATCH DATA
-------------------------- */
-
-let matchesData = [];
-
+/* FETCH DATA */
 async function fetchMatches() {
-  try {
-    const res = await fetch("data/matches.json");
-    matchesData = await res.json();
-    loadMatches();
-  } catch (err) {
-    console.log("Error loading matches.json", err);
-  }
+  const res = await fetch("data/matches.json");
+  matchesData = await res.json();
+  loadMatches();
 }
 
-/* -------------------------
-   FILTER MATCHES BY TAB
-------------------------- */
-
+/* FILTER */
 function filterMatches() {
   const now = new Date();
 
-  return matchesData.filter(match => {
-    const matchTime = new Date(match.kickoff);
+  return matchesData.filter(m => {
+    const matchTime = new Date(m.kickoff);
 
-    if (currentTab === "today") {
-      return isSameDay(now, matchTime);
-    }
+    if (currentTab === "today") return isSameDay(now, matchTime);
 
     if (currentTab === "yesterday") {
-      const y = new Date();
+      let y = new Date();
       y.setDate(now.getDate() - 1);
       return isSameDay(y, matchTime);
     }
 
     if (currentTab === "tomorrow") {
-      const t = new Date();
+      let t = new Date();
       t.setDate(now.getDate() + 1);
       return isSameDay(t, matchTime);
     }
-
-    return true;
   });
 }
 
 function isSameDay(d1, d2) {
-  return (
-    d1.getDate() === d2.getDate() &&
-    d1.getMonth() === d2.getMonth() &&
-    d1.getFullYear() === d2.getFullYear()
-  );
+  return d1.getDate() === d2.getDate() &&
+         d1.getMonth() === d2.getMonth() &&
+         d1.getFullYear() === d2.getFullYear();
 }
 
-/* -------------------------
-   STATUS CALCULATION
-------------------------- */
-
-function getMatchStatus(matchTime) {
+/* STATUS */
+function getStatus(time) {
   const now = new Date();
-  const diff = new Date(matchTime) - now;
+  const diff = new Date(time) - now;
 
-  if (diff <= 0 && diff > -2 * 60 * 60 * 1000) {
-    return "live";
-  }
-
-  if (diff > 0) {
-    return "upcoming";
-  }
-
+  if (diff <= 0 && diff > -2 * 60 * 60 * 1000) return "live";
+  if (diff > 0) return "upcoming";
   return "ft";
 }
 
-/* -------------------------
-   RENDER MATCHES
-------------------------- */
-
+/* RENDER */
 function loadMatches() {
   const grid = document.getElementById("matchGrid");
   grid.innerHTML = "";
 
-  const matches = filterMatches();
-
-  matches.forEach(match => {
-    const status = getMatchStatus(match.kickoff);
+  filterMatches().forEach(m => {
+    const status = getStatus(m.kickoff);
 
     const card = document.createElement("div");
     card.className = `match-card ${status}`;
@@ -137,48 +93,31 @@ function loadMatches() {
 
       <div class="match-top">
         <div class="team">
-          <img src="images/${match.home}.png" />
-          <span>${match.home}</span>
+          <img src="images/${m.home}.png">
+          <span>${m.home}</span>
         </div>
 
         <div class="vs">VS</div>
 
         <div class="team">
-          <img src="images/${match.away}.png" />
-          <span>${match.away}</span>
+          <img src="images/${m.away}.png">
+          <span>${m.away}</span>
         </div>
       </div>
 
       <div class="match-info">
-        <div class="time">${formatTime(match.kickoff)}</div>
+        <div class="time">${new Date(m.kickoff).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
         <div class="badge ${status}">${status.toUpperCase()}</div>
       </div>
     `;
 
-    // Click → go to match page
-    card.addEventListener("click", () => {
-      localStorage.setItem("selectedMatch", JSON.stringify(match));
+    card.onclick = () => {
+      localStorage.setItem("selectedMatch", JSON.stringify(m));
       window.location.href = "match.html";
-    });
+    };
 
     grid.appendChild(card);
   });
 }
-
-/* -------------------------
-   TIME FORMAT
-------------------------- */
-
-function formatTime(time) {
-  const date = new Date(time);
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-}
-
-/* -------------------------
-   INIT
-------------------------- */
 
 fetchMatches();
