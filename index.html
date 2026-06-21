@@ -20,6 +20,7 @@ transition:0.3s;
 padding:12px;
 }
 
+/* LIGHT MODE */
 body.light{
 background:#f5f5f5;
 color:#111;
@@ -31,11 +32,11 @@ display:flex;
 justify-content:center;
 align-items:center;
 position:relative;
-padding:10px 0;
+padding:12px 0;
 }
 
 header h1{
-font-size:20px;
+font-size:clamp(18px, 4vw, 24px);
 }
 
 #themeBtn{
@@ -43,16 +44,22 @@ position:absolute;
 right:0;
 background:none;
 border:none;
-font-size:20px;
+font-size:22px;
 cursor:pointer;
 color:inherit;
 }
 
-/* LIVE BADGE */
+/* LIVE */
 .live{
 color:red;
 font-weight:bold;
 margin:10px 0;
+font-size:14px;
+}
+
+#matchTitle{
+font-size:clamp(14px, 3.5vw, 18px);
+margin-bottom:5px;
 }
 
 /* NOTICE */
@@ -62,29 +69,32 @@ opacity:0.8;
 margin-bottom:10px;
 }
 
-/* STREAM BUTTONS */
+/* STREAM BUTTONS (RESPONSIVE FIX) */
 .streams{
 display:flex;
 gap:8px;
 margin:10px 0;
+flex-wrap:wrap;
 }
 
 .stream-btn{
 flex:1;
-padding:8px;
+min-width:90px;
+padding:10px;
 border:none;
 border-radius:6px;
 background:red;
 color:white;
 cursor:pointer;
 font-size:12px;
+text-align:center;
 }
 
 .stream-btn.active{
 background:green;
 }
 
-/* PLAYER */
+/* PLAYER (RESPONSIVE FIX) */
 .player{
 width:100%;
 aspect-ratio:16/9;
@@ -100,45 +110,51 @@ height:100%;
 border:none;
 }
 
-/* BUTTONS */
+/* ACTION BUTTONS */
 .actions{
 display:flex;
 gap:10px;
 margin:10px 0;
+flex-wrap:wrap;
 }
 
-button{
+button, a{
 padding:10px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 font-size:13px;
+text-decoration:none;
+text-align:center;
 }
 
+/* refresh */
 .refresh{
 background:#2563eb;
 color:white;
 flex:1;
+min-width:120px;
 }
 
+/* whatsapp */
 .whatsapp{
 background:#25D366;
 color:white;
 flex:2;
-text-align:center;
+min-width:180px;
 }
 
 /* FEATURES */
 .features{
 margin:15px 0;
-padding:10px;
+padding:12px;
 background:rgba(255,255,255,0.05);
 border-radius:8px;
 font-size:13px;
 }
 
 .features li{
-margin:5px 0;
+margin:6px 0;
 }
 
 /* FOOTER */
@@ -146,6 +162,20 @@ footer{
 font-size:11px;
 opacity:0.7;
 margin-top:15px;
+line-height:1.4;
+}
+
+/* SMALL MOBILE FIX */
+@media (max-width:480px){
+.stream-btn{
+flex:100%;
+}
+.actions{
+flex-direction:column;
+}
+.refresh,.whatsapp{
+width:100%;
+}
 }
 </style>
 </head>
@@ -195,7 +225,6 @@ margin-top:15px;
 </ul>
 </div>
 
-<!-- FOOTER -->
 <footer>
 We do not own or host any content displayed on this website. All streams are embedded from third-party sources. For residential viewing only.
 </footer>
@@ -238,12 +267,7 @@ const btn = document.getElementById("themeBtn");
 
 btn.onclick = () => {
 document.body.classList.toggle("light");
-
-if(document.body.classList.contains("light")){
-btn.textContent = "☀️";
-}else{
-btn.textContent = "🌙";
-}
+btn.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
 };
 
 // INIT
