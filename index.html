@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMP LIVE</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:15px;
+min-height:100vh;
+}
+
+.header{
+position:relative;
+margin-bottom:20px;
+}
+
+.logo{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+}
+
+.theme-btn{
+position:absolute;
+right:0;
+top:0;
+border:none;
+background:#1e293b;
+color:white;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.top-btn{
+display:block;
+width:100%;
+padding:14px;
+margin-bottom:10px;
+text-align:center;
+text-decoration:none;
+border-radius:12px;
+background:#1e293b;
+color:white;
+font-weight:bold;
+}
+
+.section-title{
+text-align:center;
+margin:20px 0;
+font-size:24px;
+}
+
+.match-card{
+background:#1e293b;
+border-radius:15px;
+padding:20px;
+margin-bottom:15px;
+text-align:center;
+cursor:pointer;
+}
+
+.teams{
+font-size:22px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.time{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.status{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+background:#dc2626;
+font-size:12px;
+}
+
+footer{
+margin-top:40px;
+padding:20px;
+background:#111827;
+border-radius:12px;
+font-size:12px;
+line-height:1.7;
+color:#9ca3af;
+text-align:center;
+}
+
+.light{
+background:#f4f4f4;
+color:#111;
+}
+
+.light .match-card,
+.light .top-btn,
+.light .theme-btn{
+background:white;
+color:black;
+}
+
+.light footer{
+background:#e5e5e5;
+color:#444;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<button class="theme-btn" onclick="toggleTheme()">
+🌙
+</button>
+
+<div class="logo">
+⚽ AMP LIVE
+</div>
+
+</div>
+
+<a href="#" class="top-btn">
+Join WhatsApp Group
+</a>
+
+<a href="#" class="top-btn">
+Follow WhatsApp Channel
+</a>
+
+<h2 class="section-title">
+Today's Fixtures
+</h2>
+
+<div class="match-card">
+
+<div class="teams">
+🇫🇷 France vs Senegal 🇸🇳
+</div>
+
+<div class="time">
+05:30 AM IST
+</div>
+
+<div class="status">
+LIVE
+</div>
+
+</div>
+
+<div class="match-card">
+
+<div class="teams">
+🇦🇷 Argentina vs Japan 🇯🇵
+</div>
+
+<div class="time">
+08:30 AM IST
+</div>
+
+</div>
+
+<div class="match-card">
+
+<div class="teams">
+🇧🇷 Brazil vs USA 🇺🇸
+</div>
+
+<div class="time">
+11:30 AM IST
+</div>
+
+</div>
+
+<footer>
+
+<b>DISCLAIMER</b><br><br>
+
+AMP LIVE does not host, own, store, or control any media content displayed on this website.
+
+All streams are embedded from third-party sources.
+
+This website is intended for personal and residential viewing only.
+
+Users are responsible for complying with applicable laws and rights holders' terms.
+
+© AMP LIVE
+
+</footer>
+
+<script>
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+localStorage.setItem(
+"theme",
+document.body.classList.contains("light")
+);
+
+}
+
+if(localStorage.getItem("theme")==="true"){
+document.body.classList.add("light");
+}
+
+</script>
+
+</body>
+</html>
