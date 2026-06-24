@@ -375,6 +375,7 @@ document.getElementById("player").src = streams[currentStream];
 }
 
 function selectStream(type){
+
 currentStream = type;
 
 document.querySelectorAll(".stream-btn").forEach(btn=>{
@@ -384,10 +385,19 @@ btn.classList.remove("active");
 document.getElementById(type).classList.add("active");
 
 loadStream();
+
+setTimeout(()=>{
+document.getElementById("popup").style.display="flex";
+},1500);
+
 }
 
 function refreshStream(){
 loadStream();
+
+setTimeout(()=>{
+document.getElementById("popup").style.display="flex";
+},1500);
 }
 
 document.getElementById("themeBtn").onclick = () => {
@@ -403,12 +413,11 @@ document.getElementById("popup").style.display = "none";
 loadStream();
 
 window.addEventListener("load",()=>{
-  
+
 setTimeout(()=>{
 document.getElementById("popup").style.display="flex";
-},4000);
-}
-  
+},1500);
+
 });
   
 </script>
