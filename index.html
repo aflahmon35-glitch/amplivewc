@@ -26,6 +26,21 @@ transition:0.3s;
 min-height:100vh;
 }
 
+.container{
+width:100%;
+max-width:1400px;
+margin:0 auto;
+}
+
+@media (min-width:1024px){
+
+.container{
+width:70%;
+margin:0 auto;
+}
+
+}
+
 /* LIGHT MODE */
 body.light{
 background:linear-gradient(
@@ -291,7 +306,7 @@ color:white;
 </head>
 
 <body>
-
+<div class="container">
 <!-- POPUP -->
 <div id="popup">
 <div class="popup-box">
@@ -432,5 +447,6 @@ document.getElementById("popup").style.display="flex";
 });
   
 </script>
+</div>
 </body>
 </html>
