@@ -14,15 +14,26 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0f172a;
+background:linear-gradient(
+180deg,
+#0f172a,
+#111827,
+#020617
+);
 color:white;
 padding:12px;
 transition:0.3s;
+min-height:100vh;
 }
 
 /* LIGHT MODE */
 body.light{
-background:#f5f5f5;
+background:linear-gradient(
+180deg,
+#ffffff,
+#f3f4f6,
+#e5e7eb
+);
 color:#111;
 }
 
@@ -67,49 +78,53 @@ margin-bottom:8px;
 /* GREY NOTICE BOX */
 .notice{
 text-align:center;
-background:rgba(255,255,255,0.08);
-padding:10px;
-border-radius:8px;
-font-size:clamp(11px, 3vw, 14px);
+background:#1f2937;
+padding:12px;
+border-radius:10px;
+font-size:clamp(11px,3vw,14px);
 margin-bottom:10px;
+border-left:4px solid #f59e0b;
 }
 
 /* STREAMS */
 .streams{
-display:flex;
+display:grid;
+grid-template-columns:repeat(3,1fr);
 gap:8px;
-flex-wrap:nowrap;
-overflow-x:auto;
-margin:10px 0;
+margin:12px 0;
 }
 
 .stream-btn{
-flex:1;
-min-width:90px;
-padding:10px;
+padding:12px;
 border:none;
-border-radius:6px;
-background:red;
+border-radius:10px;
+background:#dc2626;
 color:white;
 cursor:pointer;
-font-size:12px;
-white-space:nowrap;
+font-size:13px;
+font-weight:600;
+transition:.25s;
+}
+
+.stream-btn:hover{
+transform:translateY(-2px);
 }
 
 .stream-btn.active{
-background:green;
+background:#16a34a;
+box-shadow:0 0 12px rgba(22,163,74,.5);
 }
 
 /* PLAYER */
 .player{
 width:100%;
 aspect-ratio:16/9;
-transform: scale(1);
-transform-origin: top center;
 margin:10px 0;
 background:black;
-border-radius:8px;
+border-radius:14px;
 overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+border:1px solid rgba(255,255,255,0.08);
 }
   
 iframe{
@@ -201,22 +216,35 @@ padding:14px;
 position:fixed;
 inset:0;
 background:rgba(0,0,0,0.75);
-display:flex;
+display:none;
 justify-content:center;
 align-items:center;
 z-index:999;
 padding:15px;
+backdrop-filter:blur(4px);
 }
 
 .popup-box{
 background:#111827;
 width:100%;
-max-width:360px;
-border-radius:12px;
-padding:20px;
+max-width:380px;
+border-radius:14px;
+padding:24px;
 text-align:center;
+animation:popupShow .35s ease;
 }
 
+@keyframes popupShow{
+from{
+opacity:0;
+transform:scale(.85);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+  
 .popup-box h2{
 font-size:20px;
 margin-bottom:10px;
@@ -292,6 +320,9 @@ Follow WhatsApp Channel
 <button class="stream-btn active" id="english" onclick="selectStream('english')">English</button>
 <button class="stream-btn" id="malayalam" onclick="selectStream('malayalam')">Malayalam</button>
 <button class="stream-btn" id="arabic" onclick="selectStream('arabic')">Arabic</button>
+<button class="stream-btn" id="live4" onclick="selectStream('live4')">Live 4</button>
+<button class="stream-btn" id="live5" onclick="selectStream('live5')">Live 5</button>
+<button class="stream-btn" id="live6" onclick="selectStream('live6')">Live 6</button>
 </div>
 
 <!-- PLAYER -->
@@ -329,7 +360,10 @@ We do not own or host any content displayed on this website. All streams are emb
 const streams = {
 english: "https://masszipp3.github.io/hls2.html?url=https://fun.pradly.site/woord2.m3u8",
 malayalam: "https://masszipp3.github.io/hls2.html?url=https://ts.sptck.cfd/hls/tist1.m3u8",
-arabic: "https://vip.worldkoora.com/albaplayer/vip1/?serv=0"
+arabic: "https://vip.worldkoora.com/albaplayer/vip1/?serv=0",
+live4: "",
+live5: "",
+live6: ""
 };
 
 let currentStream = "english";
@@ -365,7 +399,21 @@ document.getElementById("popup").style.display = "none";
 }
 
 loadStream();
-</script>
 
+window.addEventListener("load",()=>{
+
+if(!sessionStorage.getItem("popupShown")){
+
+setTimeout(()=>{
+document.getElementById("popup").style.display="flex";
+},4000);
+
+sessionStorage.setItem("popupShown","yes");
+}
+
+});
+
+});
+</script>
 </body>
 </html>
