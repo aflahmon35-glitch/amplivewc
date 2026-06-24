@@ -313,6 +313,7 @@ Follow WhatsApp Channel
 
 <div class="notice">
 ⚠️ Please wait a few seconds for the player to load properly.
+Change the live if it isn't working
 </div>
 
 <!-- STREAMS -->
@@ -322,7 +323,7 @@ Follow WhatsApp Channel
 <button class="stream-btn" id="arabic" onclick="selectStream('arabic')">Arabic</button>
 <button class="stream-btn" id="live4" onclick="selectStream('live4')">Live 4</button>
 <button class="stream-btn" id="live5" onclick="selectStream('live5')">Live 5</button>
-<button class="stream-btn" id="live6" onclick="selectStream('live6')">Live 6</button>
+<button class="stream-btn" onclick="window.open('https://whatsapp.com/channel/0029Vb8UrZcE50Uo1ylsQP2w','_blank')">Live 6</button>
 </div>
 
 <!-- PLAYER -->
@@ -354,6 +355,7 @@ Follow WhatsApp Channel
 
 <footer>
 We do not own or host any content displayed on this website. All streams are embedded from third-party sources.
+For residential use only
 </footer>
 
 <script>
@@ -401,16 +403,11 @@ document.getElementById("popup").style.display = "none";
 loadStream();
 
 window.addEventListener("load",()=>{
-
-if(!sessionStorage.getItem("popupShown")){
-
+  
 setTimeout(()=>{
 document.getElementById("popup").style.display="flex";
 },4000);
-
-sessionStorage.setItem("popupShown","yes");
-}
-
+  
 });
   
 </script>
